@@ -1,0 +1,138 @@
+[
+    {
+        "id_salle": 100,
+        "nom_salle": "salle 1",
+        "capacite_max": 60,
+        "equipement": "Tableau, datashow, tables, chaises",
+        "localisation": "Bâtiment A –  Étage 1",
+        "image_salle": "salle1.png"
+    },
+    {
+        "id_salle": 101,
+        "nom_salle": "salle 2",
+        "capacite_max": 60,
+        "equipement": "Tableau, datashow, tables, chaises",
+        "localisation": "Bâtiment A – Étage 1",
+        "image_salle": "salle2.png"
+    },
+    {
+        "id_salle": 102,
+        "nom_salle": "salle 3",
+        "capacite_max": 60,
+        "equipement": "Tableau, datashow, tables, chaises",
+        "localisation": "Bâtiment A – Étage 1",
+        "image_salle": "salle3.png"
+    },
+    {
+        "id_salle": 103,
+        "nom_salle": "salle 4",
+        "capacite_max": 60,
+        "equipement": "Tableau, datashow, tables, chaises",
+        "localisation": "Bâtiment B –  Étage 1",
+        "image_salle": "salle4.png"
+    },
+    {
+        "id_salle": 104,
+        "nom_salle": "salle 5",
+        "capacite_max": 60,
+        "equipement": "Tableau, datashow, tables, chaises",
+        "localisation": "Bâtiment B – Étage 1",
+        "image_salle": "salle5.png"
+    },
+    {
+        "id_salle": 105,
+        "nom_salle": "salle 6",
+        "capacite_max": 65,
+        "equipement": "Tableau, datashow, tables, chaises",
+        "localisation": "Bâtiment B – Étage 1",
+        "image_salle": "salle6.png"
+    },
+    {
+        "id_salle": 200,
+        "nom_salle": "Grand Amphi",
+        "capacite_max": 300,
+        "equipement": "Tableau, écran, datashow, micros, sonorisation,siège mobile",
+        "localisation": "Bâtiment C – RDC",
+        "image_salle": "grandamphi.png"
+    },
+    {
+        "id_salle": 201,
+        "nom_salle": "mini_Amphi 2",
+        "capacite_max": 120,
+        "equipement": "Tableau, écran, datashow, micro, sonorisation",
+        "localisation": "Bâtiment C – RDC",
+        "image_salle": "mini_amphi.png"
+    },
+    {
+        "id_salle": 202,
+        "nom_salle": "mini_Amphi 3",
+        "capacite_max": 120,
+        "equipement": "Tableau, écran, datashow, micro, sonorisation",
+        "localisation": "Bâtiment C –RDC",
+        "image_salle": "mini_amphi.png"
+    },
+    {
+        "id_salle": 203,
+        "nom_salle": "mini_Amphi 4",
+        "capacite_max": 150,
+        "equipement": "Tableau, écran, datashow, micro, sonorisation",
+        "localisation": "Bâtiment B – RDC",
+        "image_salle": "mini_amphi.png"
+    },
+    {
+        "id_salle": 204,
+        "nom_salle": "mini_Amphi 5",
+        "capacite_max": 150,
+        "equipement": "Tableau, écran, datashow, micro, sonorisation",
+        "localisation": "Bâtiment B – RDC",
+        "image_salle": "mini_amphi.png"
+    },
+    {
+        "id_salle": 300,
+        "nom_salle": "Hall",
+        "capacite_max": 100,
+        "equipement": "Cafétéria, tables, chaises, distributeurs, espace détente",
+        "localisation": "RDC",
+        "image_salle": "hall.png"
+    },
+    {
+        "id_salle": 400,
+        "nom_salle": "Bibliotheque",
+        "capacite_max": 150,
+        "equipement": "Tables de travail, chaises, ordinateurs, rayonnages, Wi‑Fi",
+        "localisation": "Bâtiment C – Étage 1",
+        "image_salle": "bibliotheque.png"
+    },
+    {
+        "id_salle": 401,
+        "nom_salle": "Amphi polyvalent",
+        "capacite_max": 250,
+        "equipement": "Tableau, écran géant, datashow, micros, sonorisation,siège mobile",
+        "localisation": "Bâtiment C – Étage 1",
+        "image_salle": "amphi_polyvalent.png"
+    },
+    {
+        "id_salle": 402,
+        "nom_salle": "salle 8",
+        "capacite_max": 40,
+        "equipement": "Tableau , datashow , tables, chaises",
+        "localisation": "Bâtiment B – RDC",
+        "image_salle": "capture.png"
+    },
+    {
+        "id_salle": 403,
+        "nom_salle": "salle 9",
+        "capacite_max": 40,
+        "equipement": "Tableau , datashow , tables, chaises",
+        "localisation": "Bâtiment B – RDC",
+        "image_salle": "capture.png"
+    },
+    {
+        "id_salle": 404,
+        "nom_salle": "salle 10",
+        "capacite_max": 40,
+        "equipement": "Tableau , datashow , tables, chaises",
+        "localisation": "Bâtiment B – RDC",
+        "image_salle": "salle10.png"
+    }
+]

@@ -1,0 +1,16 @@
+{
+    "name": "MySpaces",
+    "short_name": "MySpaces",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#6366f1",
+    "description": "Gestionnaire de réservation de salles MySpaces",
+    "icons": [
+        {
+            "src": "logoapp.PNG",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}

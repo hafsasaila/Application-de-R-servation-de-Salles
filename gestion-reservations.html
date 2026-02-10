@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySpaces - Gestion des Réservations</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gestion-container {
+            padding: 2rem;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .stat-info h3 {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-info p {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .table-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        thead {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        th {
+            padding: 1.2rem 1.5rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.8);
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+            color: white;
+        }
+
+        .user-cell {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--primary-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .status-badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-attente {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .status-validee {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .status-refusee {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-action {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .btn-check {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .btn-check:hover {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-times {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .btn-times:hover {
+            background: #ef4444;
+            color: white;
+        }
+
+        .empty-state {
+            padding: 4rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .empty-state i {
+            display: block;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="brand">
+                <img src="logoapp.PNG" alt="MySpaces" class="brand-logo">
+                <span class="brand-text">MySpaces</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li>
+                    <a href="profil.html" class="nav-link">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Profil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="salles.html" class="nav-link">
+                        <i class="fas fa-th-large"></i>
+                        <span>Salles</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="calendrier.html" class="nav-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Calendrier</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reservation.html" class="nav-link">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Réserver</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="mes-reservations.html" class="nav-link">
+                        <i class="fas fa-list-ul"></i>
+                        <span>Mes Réservations</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="a-propos.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>À Propos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <button class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </header>
+
+            <div class="gestion-container">
+                <div class="page-header">
+                    <h1>Gestion des Réservations</h1>
+                    <p>Validez ou refusez les demandes d'accès aux salles.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Demandes</h3>
+                            <p id="stat-total">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>En Attente</h3>
+                            <p id="stat-pending">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Approuvées</h3>
+                            <p id="stat-approved">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Demandeur</th>
+                                <th>Salle</th>
+                                <th>Date & Heure</th>
+                                <th>Motif</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="manager-table-body">
+                            <!-- Requests will be injected here -->
+                        </tbody>
+                    </table>
+                    <div id="manager-empty" class="empty-state" style="display: none;">
+                        <i class="fas fa-inbox"></i>
+                        <p>Aucune demande de réservation n'a été trouvée.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Self-correction: ensure role is checked even if script.js checkAuth is slow
+            const role = localStorage.getItem('userRole');
+            console.log("Manager Dashboard - Current Role:", role);
+
+            if (role !== 'gestionnaire') {
+                console.warn("Accès non-autorisé détecté.");
+                // alert("Accès réservé aux gestionnaires.");
+                // window.location.href = 'salles.html';
+                // return;
+            }
+
+            // Forced call to render
+            if (typeof renderManagerRequests === 'function') {
+                renderManagerRequests();
+            } else {
+                console.error("Fonction renderManagerRequests non trouvée dans script.js");
+            }
+        });
+
+        // Add a global update listener for any status changes
+        function handleUpdateStatus(id, newStatus) {
+            console.log("Mise à jour statut:", id, newStatus);
+            if (updateReservationStatus(id, newStatus)) {
+                if (typeof renderManagerRequests === 'function') {
+                    renderManagerRequests();
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

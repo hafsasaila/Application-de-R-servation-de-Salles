@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySpaces - Réservation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="brand">
+                <img src="logoapp.PNG" alt="MySpaces" class="brand-logo">
+                <span class="brand-text">MySpaces</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li>
+                    <a href="profil.html" class="nav-link">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Profil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="salles.html" class="nav-link">
+                        <i class="fas fa-th-large"></i>
+                        <span>Salles</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="calendrier.html" class="nav-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Calendrier</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reservation.html" class="nav-link active">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Réserver</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="mes-reservations.html" class="nav-link">
+                        <i class="fas fa-list-ul"></i>
+                        <span>Mes Réservations</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="a-propos.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>À Propos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content animate-fade-in">
+            <header>
+                <div>
+                    <h2 class="page-title">Nouvelle Réservation</h2>
+                    <p class="page-subtitle" style="font-style: italic; color: var(--accent);">Réservez facilement – La
+                         Réservez facilement – La salle idéale est à portée de clic</p>
+                </div>
+            </header>
+
+            <div class="form-container">
+                <form class="reservation-form">
+                    <div class="form-group">
+                        <label class="form-label">Salle</label>
+                        <select class="form-select" id="room-select">
+                            <option value="alpha">Salle Conférence Alpha</option>
+                            <option value="beta">Bureau Créatif Beta</option>
+                            <option value="audit">Grand Auditorium</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Date</label>
+                        <input type="date" class="form-input" required>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+
+                        <div class="form-group">
+                            <label class="form-label">Heure de début</label>
+                            <input type="time" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Heure de Fin</label>
+                            <input type="time" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Objet de la réunion</label>
+                        <input type="text" class="form-input" placeholder="Ex: Point Hebdomadaire" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Notes (Optionnel)</label>
+                        <textarea class="form-textarea" rows="3" placeholder="Besoins spécifiques..."></textarea>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                        <button type="submit" class="btn btn-primary" style="flex: 1;">Confirmer la réservation</button>
+                        <button type="button" class="btn btn-outline" onclick="window.history.back()">Annuler</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <button class="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

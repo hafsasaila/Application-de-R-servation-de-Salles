@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySpaces - Inscription</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 550px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .form-header p {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            display: none;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-card">
+        <div id="role-badge" class="role-badge">Rôle</div>
+        <div class="form-header">
+            <h2 id="form-title">Complétez votre profil</h2>
+            <p id="form-subtitle">Ces informations nous aident à personnaliser votre espace.</p>
+        </div>
+
+        <div id="error-box" class="error-message">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="error-text">Accès refusé : Informations non trouvées dans la base.</span>
+        </div>
+
+        <form id="info-form" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+                <label class="form-label">Nom de famille</label>
+                <input type="text" id="user-nom" class="form-input" placeholder="Ex: DUPONT" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Email Académique</label>
+                <input type="email" id="user-email" class="form-input" placeholder="Ex: jean.dupont@ecole.ma" required>
+            </div>
+
+            <!-- Dynamic fields will be inserted here -->
+            <div id="dynamic-fields"></div>
+
+            <button type="submit" id="submit-btn" class="btn-submit">Accéder à MySpaces</button>
+            <a href="index.html" class="back-link">Changer de profil</a>
+        </form>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const role = localStorage.getItem('userRole');
+            const roleBadge = document.getElementById('role-badge');
+            const dynamicFields = document.getElementById('dynamic-fields');
+            const formSubtitle = document.getElementById('form-subtitle');
+
+            if (!role) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            roleBadge.textContent = role.charAt(0).toUpperCase() + role.slice(1);
+
+            switch (role) {
+                case 'etudiant':
+                    formSubtitle.textContent = "Prêt pour vos projets de groupe ?";
+                    dynamicFields.innerHTML = `
+                        <div class="form-group">
+                            <label class="form-label">Numéro d'Identifiant / CIN</label>
+                            <input type="text" id="user-id" class="form-input" placeholder="Ex: LH227" required>
+                        </div>
+                    `;
+                    break;
+                case 'professeur':
+                    formSubtitle.textContent = "Organisez vos cours en toute simplicité.";
+                    dynamicFields.innerHTML = `
+                        <div class="form-group">
+                            <label class="form-label">Matricule Enseignant / CIN</label>
+                            <input type="text" id="user-id" class="form-input" placeholder="Ex: PR789" required>
+                        </div>
+                    `;
+                    break;
+                case 'gestionnaire':
+                    formSubtitle.textContent = "Gérez les espaces efficacement.";
+                    dynamicFields.innerHTML = `
+                        <div class="form-group">
+                            <label class="form-label">Code Administrateur / CIN</label>
+                            <input type="text" id="user-id" class="form-input" placeholder="Ex: GEST-001" required>
+                        </div>
+                    `;
+                    break;
+            }
+        });
+
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const role = localStorage.getItem('userRole');
+            const errorBox = document.getElementById('error-box');
+            const submitBtn = document.getElementById('submit-btn');
+
+            // Map frontend role to database role
+            const roleMapping = {
+                'etudiant': 'etudiant',
+                'professeur': 'prof',
+                'gestionnaire': 'gestionnaire'
+            };
+
+            const dbRole = roleMapping[role];
+            const nom = document.getElementById('user-nom').value.trim().toUpperCase();
+            const email = document.getElementById('user-email').value.trim().toLowerCase();
+            const idNum = document.getElementById('user-id').value.trim().toUpperCase();
+
+            errorBox.style.display = 'none';
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Vérification...";
+
+            try {
+                // Use the data from data.js
+                if (typeof USERS_DATA === 'undefined') {
+                    throw new Error("Base de données (data.js) non chargée.");
+                }
+
+                console.log("Tentative de connexion:", { role: dbRole, nom, email, idNum });
+
+                const match = USERS_DATA.find(u => {
+                    const isCorrectRole = (u.role === dbRole);
+                    const idMatch = (u.num_piece.toUpperCase() === idNum);
+                    const emailMatch = (u.email.toLowerCase() === email);
+
+                    const userInputNom = nom.toLowerCase();
+                    const dbNom = u.nom.toLowerCase();
+                    const dbPrenom = u.prenom.toLowerCase();
+
+                    // Match if input Nom is part of DB Nom OR DB Prenom OR vice versa
+                    const nameMatch = dbNom.includes(userInputNom) ||
+                        dbPrenom.includes(userInputNom) ||
+                        userInputNom.includes(dbNom);
+
+                    return isCorrectRole && (idMatch || emailMatch) && nameMatch;
+                });
+
+                if (match) {
+                    console.log("✅ Accès accordé:", match);
+                    localStorage.setItem('userName', `${match.prenom} ${match.nom}`);
+                    localStorage.setItem('userEmail', match.email);
+                    localStorage.setItem('userIdNum', match.num_piece);
+                    localStorage.setItem('userRole', match.role); // Reinforce the role from DB
+
+                    submitBtn.textContent = "Bienvenue !";
+                    setTimeout(() => {
+                        window.location.href = 'salles.html';
+                    }, 500);
+                } else {
+                    console.warn("❌ Identifiants invalides");
+                    document.getElementById('error-text').textContent = "Accès refusé : Vérifiez vos informations et votre rôle.";
+                    errorBox.style.display = 'block';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Accéder à MySpaces";
+                }
+            } catch (error) {
+                console.error("🔥 Erreur:", error);
+                document.getElementById('error-text').textContent = "Erreur technique : " + error.message;
+                errorBox.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Réessayer";
+            }
+        }
+    </script>
+</body>
+
+</html>

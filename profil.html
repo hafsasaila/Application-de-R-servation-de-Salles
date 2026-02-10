@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySpaces - Mon Profil</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .info-item {
+            background: var(--bg-surface);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .info-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="brand">
+                <img src="logoapp.PNG" alt="MySpaces" class="brand-logo">
+                <span class="brand-text">MySpaces</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li>
+                    <a href="profil.html" class="nav-link active">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Profil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="salles.html" class="nav-link">
+                        <i class="fas fa-th-large"></i>
+                        <span>Salles</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="calendrier.html" class="nav-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Calendrier</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reservation.html" class="nav-link">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Réserver</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="mes-reservations.html" class="nav-link">
+                        <i class="fas fa-list-ul"></i>
+                        <span>Mes Réservations</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="a-propos.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>À Propos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content animate-fade-in">
+            <header>
+                <div>
+                    <h2 class="page-title">Mon Profil</h2>
+                    <p class="page-subtitle">Gérez vos informations personnelles.</p>
+                </div>
+            </header>
+
+            <div class="profile-container">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h3 id="profile-name" style="font-size: 1.5rem; margin-bottom: 0.25rem;">Utilisateur MySpaces
+                        </h3>
+                        <span id="profile-role-badge" class="role-badge" style="margin-bottom: 0;">Profil</span>
+                    </div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Email</div>
+                        <div class="info-value" id="profile-email">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Rôle Principal</div>
+                        <div class="info-value" id="profile-role-text">-</div>
+                    </div>
+                    <div id="extra-info-container"
+                        style="grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <!-- Populate dynamicly -->
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary">Modifier le profil</button>
+                    <button class="btn btn-outline" onclick="resetData()"
+                        style="color: var(--accent); border-color: var(--accent);">
+                        <i class="fas fa-trash-alt"></i> Réinitialiser les données
+                    </button>
+                    <button class="btn btn-outline" onclick="window.location.href='index.html'"
+                        style="color: #ef4444; border-color: #ef4444;">
+                        <i class="fas fa-sign-out-alt"></i> Déconnexion
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <button class="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Auth Guard for inline scripts (if script.js isn't enough)
+            const userName = localStorage.getItem('userName');
+            if (!userName) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const role = localStorage.getItem('userRole') || 'Utilisateur';
+            const name = localStorage.getItem('userName') || 'Utilisateur MySpaces';
+            const email = localStorage.getItem('userEmail') || '-';
+            const idNum = localStorage.getItem('userIdNum') || '-';
+
+            document.getElementById('profile-role-badge').textContent = role.charAt(0).toUpperCase() + role.slice(1);
+            document.getElementById('profile-role-text').textContent = role.charAt(0).toUpperCase() + role.slice(1);
+
+            document.getElementById('profile-name').textContent = name;
+            document.getElementById('profile-email').textContent = email;
+
+            const extraInfo = document.getElementById('extra-info-container');
+            if (role === 'etudiant') {
+                extraInfo.innerHTML = `
+                    <div class="info-item">
+                        <div class="info-label">Identifiant / CIN</div>
+                        <div class="info-value">${idNum}</div>
+                    </div>
+                `;
+            } else if (role === 'professeur') {
+                extraInfo.innerHTML = `
+                    <div class="info-item">
+                        <div class="info-label">Matricule / CIN</div>
+                        <div class="info-value">${idNum}</div>
+                    </div>
+                `;
+            } else if (role === 'gestionnaire') {
+                extraInfo.innerHTML = `
+                    <div class="info-item">
+                        <div class="info-label">Code / CIN</div>
+                        <div class="info-value">${idNum}</div>
+                    </div>
+                `;
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

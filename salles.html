@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySpaces - Nos Salles</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="brand">
+                <img src="logoapp.PNG" alt="MySpaces" class="brand-logo">
+                <span class="brand-text">MySpaces</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li>
+                    <a href="profil.html" class="nav-link">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Profil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="salles.html" class="nav-link active">
+                        <i class="fas fa-th-large"></i>
+                        <span>Salles</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="calendrier.html" class="nav-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Calendrier</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reservation.html" class="nav-link">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Réserver</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="mes-reservations.html" class="nav-link">
+                        <i class="fas fa-list-ul"></i>
+                        <span>Mes Réservations</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="a-propos.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>À Propos</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer" style="display: none;"></div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content animate-fade-in">
+            <header
+                style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 2rem;">
+                <!-- Title First -->
+                <div
+                    style="width: 100%; display: flex; flex-direction: column; align-items: center; margin-bottom: 1.5rem;">
+                    <h1 class="page-title"
+                        style="margin-bottom: 0.5rem; font-family: 'Dancing Script', cursive; font-size: 3rem; background: linear-gradient(to right, #fff, #94a3b8); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        Welcome To Your Second Home
+                    </h1>
+                </div>
+
+                <!-- Image Second, Horizontal -->
+                <div class="hero-image-container"
+                    style="width: 100%; max-width: 900px; margin-bottom: 2rem; display: flex; justify-content: center;">
+                    <img src="images/welcome_to_ur_second_home.PNG" alt="Welcome to ur second home"
+                        style="width: 100%; height: 350px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                </div>
+                <div
+                    style="width: 100%; display: flex; flex-direction: column; align-items: center; margin-bottom: 1.5rem;">
+                    <h3 class="page-title1"
+                        style="margin-bottom: 0.5rem; font-family: 'Dancing Script', cursive; font-size: 2rem; background: linear-gradient(to right, #fff, #94a3b8); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        Every Room Tells a Story Start Yours Here
+                    </h3>
+                </div>
+                <button class="btn btn-primary" onclick="window.location.href='reservation.html'">
+                    <i class="fas fa-plus"></i> Nouvelle Réservation
+                </button>
+            </header>
+
+            <div id="rooms-loader" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                <i class="fas fa-circle-notch fa-spin"></i> Chargement des salles...
+            </div>
+            <div id="rooms-grid" class="grid-container">
+                <!-- Populated by JS -->
+            </div>
+        </main>
+
+        <button class="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

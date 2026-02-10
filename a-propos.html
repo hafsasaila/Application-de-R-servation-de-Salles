@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySpaces - À Propos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="brand">
+                <img src="logoapp.PNG" alt="MySpaces" class="brand-logo">
+                <span class="brand-text">MySpaces</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li>
+                    <a href="profil.html" class="nav-link">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Profil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="salles.html" class="nav-link">
+                        <i class="fas fa-th-large"></i>
+                        <span>Salles</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="calendrier.html" class="nav-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Calendrier</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reservation.html" class="nav-link">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Réserver</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="mes-reservations.html" class="nav-link">
+                        <i class="fas fa-list-ul"></i>
+                        <span>Mes Réservations</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="a-propos.html" class="nav-link active">
+                        <i class="fas fa-info-circle"></i>
+                        <span>À Propos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content animate-fade-in">
+            <header>
+                <h2 class="page-title">À Propos de MySpaces</h2>
+                <p class="page-subtitle">La révolution de la gestion des espaces académiques.</p>
+            </header>
+
+            <div class="card" style="max-width: 800px; margin: 0 auto;">
+                <div class="card-body" style="line-height: 1.8;">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Notre Vision</h3>
+                    <p>MySpaces est né de la volonté de simplifier l'accès aux ressources partagées au sein de notre
+                        établissement. Finies les files d'attente et les feuilles d'émargement papier : tout se passe
+                        désormais en quelques clics.</p>
+
+                    <h3 style="color: var(--primary); margin: 2rem 0 1rem;">Fonctionnalités Clés</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><i class="fas fa-bolt"
+                                style="color: #eab308; margin-right: 10px;"></i> <strong>Rapidité :</strong> Réservation
+                            instantanée avec validation en temps réel via votre base de données.</li>
+                        <li style="margin-bottom: 1rem;"><i class="fas fa-eye"
+                                style="color: var(--primary); margin-right: 10px;"></i> <strong>Transparence :</strong>
+                            Consultez la disponibilité des amphis et des salles de cours à tout moment.</li>
+                        <li style="margin-bottom: 1rem;"><i class="fas fa-shield-alt"
+                                style="color: #22c55e; margin-right: 10px;"></i> <strong>Sécurité :</strong> Accès
+                            sécurisé basé sur les rôles (Étudiants, Professeurs, Gestionnaires) et vérification par
+                            identifiant.</li>
+                    </ul>
+
+                    <h3 style="color: var(--primary); margin: 2rem 0 1rem;">L'Équipe</h3>
+                    <p>Développé avec passion pour offrir une expérience utilisateur premium, fluide et moderne, digne
+                        des standards actuels du web.</p>
+
+                    <div
+                        style="margin-top: 3rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem;">
+                        <img src="logoapp.PNG" alt="MySpaces Logo"
+                            style="height: 60px; border-radius: 12px; margin-bottom: 1rem;">
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">&copy; 2026 MySpaces - Tous droits
+                            réservés.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="mobile-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    <script src="script.js"></script>
+</body>
+
+</html>
